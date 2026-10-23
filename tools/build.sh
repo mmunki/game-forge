@@ -29,8 +29,8 @@ echo "==> loading the main scene headless"
 echo "==> packaging"
 (
   cd build/linux
-  rm -f game-forge-linux.zip
-  zip -X -q -9 game-forge-linux.zip game-forge.x86_64
+  rm -f ../game-forge-linux.zip
+  zip -X -q -9 ../game-forge-linux.zip game-forge.x86_64
 )
 (
   cd build/web

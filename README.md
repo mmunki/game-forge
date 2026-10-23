@@ -68,6 +68,7 @@ tools/perf_budget.py       frame-time / draw-call / VRAM gates
 perf/budget.json           performance budget
 docs/OPTIMIZATION.md       rendering, CPU and asset guidelines
 docs/UNREAL.md             Unreal Engine on a self-hosted runner
+docs/FOOTBALL.md           football-game scope and the Unreal vs 10-30 MB decision
 .github/workflows/build.yml  the checkpointed build
 ```
 

@@ -133,16 +133,18 @@ jobs:
         if: env.BUILD_STATUS == '124'
         run: |
           set -euo pipefail
-          tar --exclude=.git --exclude=build-state.tar.gz \
-            -czf build-state.tar.gz .
-          ls -lh build-state.tar.gz
+          # Write outside the workspace: a tarball inside the directory it
+          # archives makes GNU tar report "file changed as we read it".
+          tar --exclude=.git \
+            -czf "$RUNNER_TEMP/build-state.tar.gz" .
+          ls -lh "$RUNNER_TEMP/build-state.tar.gz"
 
       - name: Upload the checkpoint
         if: env.BUILD_STATUS == '124'
         uses: actions/upload-artifact@v4
         with:
           name: build-state-${{ github.run_id }}
-          path: build-state.tar.gz
+          path: ${{ runner.temp }}/build-state.tar.gz
           retention-days: 7
           if-no-files-found: error
 
